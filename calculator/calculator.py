@@ -18,6 +18,7 @@ def mathOp():
         equation = input(str(previous))
 
     if equation == 'quit':
+        print('Goodbye, CORONA!')
         run = False
     else:
         equation = re.sub('[a-zA-Z,.:()" "]', '',equation)
