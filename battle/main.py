@@ -34,9 +34,9 @@ player_items = [{'item':potion, 'quantity': 15},
 
 
 #Instantiate people
-player1 = Person('Valos:',460, 65, 60, 34, player_spells,player_items)
-player2 = Person('Baby :',460, 65, 60, 34, player_spells,player_items)
-player3 = Person('Nigga:',460, 65, 60, 34, player_spells,player_items)
+player1 = Person('Valos:',400, 75, 60, 34, player_spells,player_items)
+player2 = Person('Baby :',560, 45, 80, 20, player_spells,player_items)
+player3 = Person('Nigga:',800, 20, 100, 42, player_spells,player_items)
 enemy = Person('Pedro:',1200, 65, 45, 25, [],[])
 
 players = [player1, player2, player3]
@@ -48,7 +48,7 @@ i = 0
 print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 
 while running:
-    print('=====================================')
+    print('=====================================YOUR TURN======================================================')
     print('\n')
     print('Name                 HP                                   MP')
     for player in players:
@@ -57,7 +57,7 @@ while running:
     
     for player in players:
         player.choose_action()
-        choice = input('Choose action: ')
+        choice = input('    Choose action: ')
         index = int(choice) - 1
 
         ###################PLAYER CHOOSES AN ACTION################
@@ -70,7 +70,7 @@ while running:
         #2 Magic
         elif index == 1:
             player.choose_magic()
-            magic_choice = int(input('Choose magic:')) - 1
+            magic_choice = int(input('    Choose magic:')) - 1
 
             if magic_choice == -1:
                 continue
@@ -97,7 +97,7 @@ while running:
         #3 ITEMS
         elif index == 2:
             player.choose_item()
-            item_choice = int(input('Choose item:')) -1
+            item_choice = int(input('    Choose item:')) -1
 
             if item_choice == -1:
                 continue
