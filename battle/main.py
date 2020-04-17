@@ -3,22 +3,22 @@ from classes.magic import Spell
 from classes.inventory import Item
 
 #Create black magic
-fire = Spell('Fire', 10, 100, 'black')
-thunder = Spell('Thunder', 10, 100, 'black')
-blizzard = Spell('Blizzard', 10, 100, 'black')
-meteor = Spell('Meteor', 20, 200, 'black')
+fire = Spell('Fire', 25, 600, 'black')
+thunder = Spell('Thunder', 25, 600, 'black')
+blizzard = Spell('Blizzard', 25, 600, 'black')
+meteor = Spell('Meteor', 40, 1200, 'black')
 quake = Spell('Quake', 14, 140, 'black')
 
 #Creta White Magic
-cure = Spell('Cure', 12, 120, 'white')
-cura = Spell('Cura', 18, 200, 'white')
+cure = Spell('Cure', 25, 620, 'white')
+cura = Spell('Cura', 32, 1500, 'white')
 
 player_spells = [fire,thunder,blizzard,meteor,quake,cure,cura]
 
 #Create some Items
 potion = Item('Potion', 'potion', 'Heals 50 HP', 50)
 hipotion = Item('Hi-Potion', 'potion', 'Heals 100 HP', 100)
-superpotion = Item('Super Potion', 'potion', 'Heals 500 HP', 500)
+superpotion = Item('Super Potion', 'potion', 'Heals 1000 HP', 1000)
 elixer = Item('Elixer', 'elixer', 'Fully restores HP/MP', 9999)
 hielixer = Item('MegaElixer', 'elixer', 'Fully restores HP/MP of everyone', 9999)
 
@@ -34,10 +34,10 @@ player_items = [{'item':potion, 'quantity': 15},
 
 
 #Instantiate people
-player1 = Person('Valos:',400, 75, 60, 34, player_spells,player_items)
-player2 = Person('Baby :',560, 45, 80, 20, player_spells,player_items)
-player3 = Person('Nigga:',800, 20, 100, 42, player_spells,player_items)
-enemy = Person('Pedro:',1200, 65, 45, 25, [],[])
+player1 = Person('Valos:',3260, 132, 300, 34, player_spells,player_items)
+player2 = Person('Baby :',4160, 188, 311, 20, player_spells,player_items)
+player3 = Person('Nigga:',3089, 174, 288, 42, player_spells,player_items)
+enemy = Person('Pedro:',11200, 701, 545, 25, [],[])
 
 players = [player1, player2, player3]
 
@@ -48,9 +48,9 @@ i = 0
 print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
 
 while running:
-    print('=====================================YOUR TURN======================================================')
+    print('==============================YOUR TURN=================================')
     print('\n')
-    print('Name                 HP                                   MP')
+    print('Name                 HP                                     MP')
     for player in players:
         player.get_stats()
         
@@ -128,7 +128,7 @@ while running:
     enemy_choice = 1
 
     enemy_dmg = enemy.generate_damage()
-    player.take_damage(enemy_dmg)
+    player1.take_damage(enemy_dmg)
     print('Enemy attacked for', enemy_dmg, 'points of damage. Player HP:', player.get_hp())
 
     print('--------------------------')
