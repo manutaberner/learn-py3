@@ -48,11 +48,11 @@ enemies = [enemy1, enemy2, enemy3]
 
 running = True
 i = 0
-
-print(bcolors.FAIL + bcolors.BOLD + "AN ENEMY ATTACKS!" + bcolors.ENDC)
+print('\n')
+print(bcolors.FAIL + bcolors.BOLD + "RPG GAME" + bcolors.ENDC)
 
 while running:
-    print('==============================YOUR TURN=================================')
+    print('==============================NEW TURN=================================')
     print('\n')
     print('Name                 HP                                     MP')
     for player in players:
@@ -77,6 +77,11 @@ while running:
 
             enemies[enemy].take_damage(dmg)
             print('You attacked '+  enemies[enemy].name +' for', dmg, 'points of damage. Enemy HP:', enemies[enemy].get_hp())
+
+            if enemies[enemy].get_hp() == 0:
+                print(enemies[enemy].name +' has died.')
+                del enemies[enemy]
+
 
         #2 Magic
         elif index == 1:
@@ -107,6 +112,10 @@ while running:
                 enemies[enemy].take_damage(magic_dmg)
 
                 print(bcolors.OKBLUE + '\n' + spell.name + ' deals' , str(magic_dmg), 'points of damage to ' +  enemies[enemy].name + bcolors.ENDC)
+
+                if enemies[enemy].get_hp() == 0:
+                    print(enemies[enemy].name +' has died.')
+                    del enemies[enemy]
         
         #3 ITEMS
         elif index == 2:
@@ -144,6 +153,10 @@ while running:
                 enemies[enemy].take_damage(item.prop)
 
                 print(bcolors.FAIL + '\n' + item.name + ' deals' , str(item.prop), 'points of damageto ' +  enemies[enemy].name + bcolors.ENDC)
+
+                if enemies[enemy].get_hp() == 0:
+                    print(enemies[enemy].name +' has died.')
+                    del enemies[enemy]
 
     ############################ENDS ACTION MENU###########################
 
