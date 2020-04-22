@@ -13,9 +13,10 @@ quake = Spell('Quake', 14, 140, 'black')
 #Creta White Magic
 cure = Spell('Cure', 25, 620, 'white')
 cura = Spell('Cura', 32, 1500, 'white')
+curaga = Spell('Curaga', 50, 6000, 'white')
 
 player_spells = [fire,thunder,blizzard,meteor,quake,cure,cura]
-enemy_spells = [fire,meteor,cure]
+enemy_spells = [fire,meteor,curaga]
 #Create some Items
 potion = Item('Potion', 'potion', 'Heals 50 HP', 50)
 hipotion = Item('Hi-Potion', 'potion', 'Heals 100 HP', 100)
@@ -52,6 +53,7 @@ print('\n')
 print(bcolors.FAIL + bcolors.BOLD + "RPG GAME" + bcolors.ENDC)
 
 while running:
+    print('\n')
     print('==============================NEW TURN=================================')
     print('\n')
     print('Name                 HP                                     MP')
@@ -152,7 +154,7 @@ while running:
 
                 enemies[enemy].take_damage(item.prop)
 
-                print(bcolors.FAIL + '\n' + item.name + ' deals' , str(item.prop), 'points of damageto ' +  enemies[enemy].name + bcolors.ENDC)
+                print(bcolors.FAIL + '\n' + item.name + ' deals' , str(item.prop), 'points of damage to ' +  enemies[enemy].name + bcolors.ENDC)
 
                 if enemies[enemy].get_hp() == 0:
                     print(enemies[enemy].name +' has died.')
@@ -181,6 +183,8 @@ while running:
         print( bcolors.FAIL + 'Enemy has defeated you :(' + bcolors.ENDC)
         running = False
 
+    print('\n')
+    print('ENEMIES TURN TO ATTACK')
     #Enemy attacks
     for enemy in enemies:
         enemy_choice = random.randrange(0,2)
@@ -205,11 +209,11 @@ while running:
 
                 players[target].take_damage(magic_dmg)
 
-                print(bcolors.OKBLUE + '\n'+ enemy.name.replace(':','') + "'s " + spell.name + ' deals' , str(magic_dmg), 'points of damage to ' +  players[target].name + bcolors.ENDC)
+                print(bcolors.FAIL + '\n'+ enemy.name.replace(':','') + "'s " + spell.name + ' deals' , str(magic_dmg), 'points of damage to ' +  players[target].name + bcolors.ENDC)
 
                 if players[target].get_hp() == 0:
-                    print(player[target].name +' has died.')
-                    del players[player]
+                    print(players[target].name +' has died.')
+                    del players[target]
 
 
         
