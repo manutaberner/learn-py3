@@ -7,7 +7,7 @@ r = requests.get('https://www.bing.com/search', params = params)
 
 soup = BeautifulSoup(r.text, 'html.parser')
 results = soup.find('ol', {'id': 'b_results'})
-links = results .findAll('li',{'class': 'b_algo'})
+links = results.findAll('li',{'class': 'b_algo'})
 
 for item in links:
     item_text = item.find('a').text
@@ -16,3 +16,6 @@ for item in links:
     if item_text and item_href:
         print(item_text)
         print(item_href)
+        
+        children = item.find('h2')
+        print('Sibling:', children.next_siblng)
